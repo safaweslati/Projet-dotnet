@@ -1,0 +1,22 @@
+﻿
+
+<h1>@ViewBag.club.Name Members</h1>
+<table class="table">
+<caption>List of members</caption>
+  <tbody>
+   @foreach (var student in ViewBag.club.Studs)
+    {
+     <tr>
+         <td>@student</td>
+       <td>@student.FirstName</td>
+       <td>@student.LastName</td>
+     </tr>
+    }
+        
+                <td>@ViewBag.club</td>
+                <td>@ViewBag.club.Name</td>
+                <td>@ViewBag.club.Studs</td>
+        
+   </tbody>
+
+</table>

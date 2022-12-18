@@ -1,0 +1,34 @@
+﻿@{    
+    ViewData["Title"] = "Clubs";
+    
+}
+@model Insat.Data.ClubsInsatContext ;
+<h1>@ViewData["Title"]</h1>
+
+
+@foreach(var club in Model.Clubs)
+{
+<section>
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="p-5"><img class="img-fluid rounded-circle"  src="@club.Image"  /></div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="p-5">
+                    <h2 class="display-4"><b>@club.Name</b></h2>
+                    <p>@club.Description</p>
+                </div>
+                <div class="p-5">
+                      <!-- <a asp-controller="Insat" asp-action="JoinClub"><button type="button" class="btn btn-danger">
+                            Join
+                        </button></a>-->
+                        <button type="button" class="btn btn-danger">@Html.ActionLink("Join", "JoinClub", new { id = club.Id })</button>
+                    <a href="@club.Url"><button type="button" class="btn btn-info">Follow</button></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+}

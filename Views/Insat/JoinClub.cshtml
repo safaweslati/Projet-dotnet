@@ -1,0 +1,65 @@
+﻿
+
+@model Insat.Models.Student
+
+@*using(@Html.BeginForm("Insat","JoinClub",FormMethod.Post, new { @style = "margin-top: 6%"})){
+ <!-- <form method="post" action="/Insat/JoinClub" style="margin-top: 6%"> </form> -->
+    <h1 style="margin-left: 40%">@Model.Name</h1>
+     <h2 class="form-title">Join Us</h2>
+    <div class="form-group">
+    <label>First Name</label>
+    <input type="text" class="form-control" placeholder="Enter your first name">
+    </div>
+     <div class="form-group">
+    <label>Last Name</label>
+    <input type="text" class="form-control" placeholder="Enter your last name">
+    </div><div class="form-group">
+        <label>Email address</label>
+        <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter your email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <br>
+}
+*@
+
+<div>
+    @if (ViewData["Data"] == "vrai")
+    {
+        <ul>
+        <li class="list-group-item list-group-item-danger">All fields are required</li>
+        </ul>
+    }
+     @if (ViewData["stud"] == "vrai")
+    {
+        <ul>
+        <li class="list-group-item list-group-item-danger">You are already a member of @ViewBag.club.Name Club</li>
+        </ul>
+    }
+    @if (ViewData["std"] == "vrai")
+    {
+        <ul>
+            <li class="list-group-item list-group-item-success">Welcome to our family . You are a @ViewBag.club.Name member now !! </li>
+        </ul>
+    }
+    @using (Html.BeginForm("JoinClub", "Insat", FormMethod.Post, new { @style = "margin-top: 6%" }))
+    {
+        <h1 style="margin-left: 40%">@ViewBag.club.Name</h1>
+        <h2 class="form-title">Join Us</h2>
+        <label>N Inscription</label>
+        <br />
+        @Html.TextBoxFor(model => model.Ninscri, new{ @class = "form-control", @placeholder="Numero d'inscription"})
+        <label>First Name</label>
+        <br />
+        @Html.TextBoxFor(model => model.FirstName, new{ @class = "form-control", @placeholder="Enter your first name"})
+        <label>Last Name</label>
+        <br />
+        @Html.TextBoxFor(model => model.LastName , new{ @class = "form-control", @placeholder="Enter your last name"})
+        <label>Email </label>
+        <br />
+        @Html.TextBoxFor(model => model.Email, new{ @class = "form-control", @placeholder="Enter your email"})
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+        <br />
+        <button type="submit" class="btn btn-primary">Submit</button>
+    }
+</div>

@@ -1,0 +1,37 @@
+﻿@model Insat.Data.ClubsInsatContext 
+
+
+
+<main id="main">
+
+    <div class="breadcrumbs" data-aos="fade-in">
+        <div class="container">
+            <h2>Events</h2>
+        </div>
+    </div> 
+
+    <section id="events" class="events">
+        <div class="container" data-aos="fade-up">
+            <div class="row">
+                @foreach(var e in Model.Events){
+                <div class="col-md-6 d-flex align-items-stretch">
+                        <div class="card">
+                        <div class="card-img">
+                                <img class="card-img" src=@e.Img>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">@e.Name</h5>
+                            <p class="fst-italic text-center">Organized By : @Model.Clubs.Find(e.ClubId).Name</p>
+                            <p class="card-text">@e.Description</p>
+                        </div>
+                    </div>
+                </div> 
+               
+                }
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
